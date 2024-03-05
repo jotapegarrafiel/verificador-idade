@@ -5,6 +5,7 @@ function verificar() {
     let res = document.querySelector('div#res')
     if(fAno.value.length == 0 || Number(fAno.value) > ano){
         window.alert(`[ERRO]Dados inseridos de forma errada, tente novamente!`)
+        return
     }
     let fSex = document.getElementsByName('radsex')
     let idade = ano - Number(fAno.value)
@@ -12,7 +13,7 @@ function verificar() {
     let img = document.createElement('img')
     img.setAttribute('id', 'foto')
     if (fSex[0].checked){
-        genero = 'Homem'
+        genero = 'homem'
         if (idade >= 0 && idade < 10){
             //Criança
             img.setAttribute('src', 'homem_crianca.png')
@@ -27,7 +28,7 @@ function verificar() {
             img.setAttribute('src', 'homem_idoso.png')
         }
     } else if (fSex[1].checked){
-        genero = 'Mulher'
+        genero = 'mulher'
         if (idade >= 0 && idade < 10){
             //Criança
             img.setAttribute('src', 'mulher_crianca.png')
@@ -45,4 +46,5 @@ function verificar() {
     res.style.textAlign = 'Center'
     res.innerHTML = `Detectamos que você é ${genero} com ${idade} anos`
     res.appendChild(img)
+    fAno.value = ''
 }
